@@ -10,12 +10,14 @@ import br.edu.ifpe.garanhuns.provapc.negocio.Aluno;
 import br.edu.ifpe.garanhuns.provapc.negocio.Professor;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
+import br.edu.ifpe.garanhuns.provapc.negocio.Turma;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Repositorio;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioTurma;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 
 /**
@@ -34,6 +36,7 @@ public abstract class FabricaRepositorio {
     private RepositorioProfessor professores = null;
     private RepositorioAluno alunos = null;
     private RepositorioUsuario usuarios = null;
+    private RepositorioTurma turmas = null;
     
     /**
      * Isso vai lhe dar uma Fábrica de Repositórios.
@@ -96,6 +99,15 @@ public abstract class FabricaRepositorio {
             usuarios = newRepositorioUsuario();
         return usuarios;
     }
+     /**
+     * Retorna o repositório de turma
+     * @return o repositório de turma
+     */
+    public final RepositorioTurma getRepositorioTurma() {
+        if(turmas == null)
+            turmas = newRepositorioTurma();
+        return turmas;
+    }
     
     // Métodos abstratos (protegidos)
     /**
@@ -128,6 +140,11 @@ public abstract class FabricaRepositorio {
      * @return repostório usuario
      */
     public abstract RepositorioUsuario newRepositorioUsuario();
+    /**
+     * Retorna um repositório para turmas novo
+     * @return repositório de turmas
+     */
+    protected abstract RepositorioTurma newRepositorioTurma();
     
     /**
      * Retorna um repositório para a classe desejada.
@@ -147,9 +164,10 @@ public abstract class FabricaRepositorio {
             return this.getRepositorioProfessor();
         } else if(c.equals(Aluno.class)) {
             return this.getRepositorioAluno();
-        } else {
+        } else if(c.equals(Turma.class)){
+            return this.getRepositorioTurma();
+        } else{
             return null; 
         }
     }
-    
 }

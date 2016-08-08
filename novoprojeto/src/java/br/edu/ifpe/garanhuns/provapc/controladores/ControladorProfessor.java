@@ -51,7 +51,7 @@ public class ControladorProfessor {
         this.alterando = selected;
         return "CadastrarProfessor.xhtml";
     }
-    public Professor recupearar(long id) {
+    public Professor recuperar(long id) {
         return repositorio.recuperar(id);
     }
 
