@@ -13,7 +13,7 @@
             <p:fieldset legend="Cadastrar Professor">
                 <p:panelGrid columns="2">
                     <h:outputText value="Siape"/>
-                    <p:inputText value="#{professorBuilder.siape}"/>
+                    <p:inputText value="#{professorBuilder.siape}" maxlength="6" />
                     <h:outputText value="Nome"/>
                     <p:inputText value="#{professorBuilder.nome}"/>
                     <p:commandButton value="Cadastrar" action="#{controladorProfessor.adicionar(professorBuilder.construir())}"/>
