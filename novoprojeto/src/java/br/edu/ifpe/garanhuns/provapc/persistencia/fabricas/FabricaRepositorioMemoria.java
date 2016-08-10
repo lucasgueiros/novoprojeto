@@ -10,13 +10,14 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlun
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProfessorMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoMemoria;
-import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioTurmaMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioTurma;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 
 /**
@@ -56,5 +57,10 @@ class FabricaRepositorioMemoria extends FabricaRepositorio {
     @Override
     public RepositorioUsuario newRepositorioUsuario() {
         return new RepositorioUsuarioMemoria();
+    }
+
+    @Override
+    protected RepositorioTurma newRepositorioTurma() {
+        return new RepositorioTurmaMemoria();
     }
 }
